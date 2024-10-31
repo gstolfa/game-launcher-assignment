@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gamelauncherdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - backend
+
+  gamelauncher:
+    image: gstolfa/gamelauncher:s1
+    container_name: gamelauncher
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    networks:
+      - backend
+
+  backoffice:
+    image: gstolfa/backoffice:s1
+    container_name: backoffice
+    environment:
+      NODE_ENV: production
+      DB_HOST: mysql         # Nome del servizio mysql
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: gamelauncherdb
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    networks:
+      - backend
+
+volumes:
+  mysql-data:
+
+networks:
+  backend:

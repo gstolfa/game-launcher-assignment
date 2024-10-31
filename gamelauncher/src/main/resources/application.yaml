@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: "gamelauncher"
+  profiles:
+    active: "prod"
+  datasource:
+    url: jdbc:mysql://mysql:3306/gamelauncherdb
+    username: root
+    password: root
+    hikari:
+      connectionTimeout: 30000
+      initializationFailTimeout: 0
+      maxLifetime: 1800000
+      maximumPoolSize: 5
+      connectionTestQuery: SELECT 1
+  jpa:
+    show-sql: true
+  sql:
+    init:
+      mode: always
+
+game:
+  code:
+    length: 7

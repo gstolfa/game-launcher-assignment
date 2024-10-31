@@ -1,0 +1,45 @@
+<!-- src/views/index.ejs -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Sessions Launched Today</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+    <style>
+        .date-subtitle {
+            font-size: 0.8em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Game Sessions Launched on <span class="date-subtitle"><%= currentDate %></span></h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Game Code</th>
+                    <th>Session ID</th>
+                    <th>Creation Time</th> <!-- Updated to reflect only the time -->
+                </tr>
+            </thead>
+            <tbody>
+                <% if (sessions.length > 0) { %>
+                    <% sessions.forEach(session => { %>
+                        <tr>
+                            <td><%= session.game_code %></td>
+                            <td><%= session.session_id %></td>
+                            <td><%= new Date(session.created_at).toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) %></td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="3">No game sessions found for today.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
