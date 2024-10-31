@@ -31,7 +31,7 @@ services:
     container_name: backoffice
     environment:
       NODE_ENV: production
-      DB_HOST: mysql         # Nome del servizio mysql
+      DB_HOST: mysql
       DB_PORT: 3306
       DB_USER: root
       DB_PASSWORD: root
