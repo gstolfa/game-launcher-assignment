@@ -80,5 +80,5 @@ The `docker-compose.yml` file is located in the root of this repository.
 
    ```bash
    docker-compose up
-This command will automatically pull the necessary images and start the application.
+This command will automatically pull the necessary images from Docker Hub and start the application.
 
