@@ -22,6 +22,10 @@ This backend service enables users to launch a game session by:
 
 You can pass the language as a query parameter. If no language is provided, the default value will be **`en`**.
 
+#### Game Code Validation
+To simulate scenarios where a **game code is not found**, certain validation rules are applied:
+- The game code must be an alphanumeric string with a length of **7 characters**, as specified in the configuration file (`application.yml`). This allows for testing valid and invalid codes without needing a game repository.
+
 ### Backoffice Dashboard (Node.js)
 
 A Node.js application with server-side rendering (SSR) to display a list of game sessions launched on the current day. This application fetches data from the MySQL database and renders it on an HTML page, offering an overview of daily game sessions.
