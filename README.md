@@ -72,9 +72,13 @@ A Node.js application with server-side rendering (SSR) to display a list of game
 
 ### Installation
 
+The `docker-compose.yml` file is located in the root of this repository.
+
 1. **Start the Application with Docker Compose**
 
-   Run the following command to start all services:
+   Run the following command from the root directory to start all services:
 
    ```bash
    docker-compose up
+This command will automatically pull the necessary images and start the application.
+
